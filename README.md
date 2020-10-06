@@ -18,7 +18,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * Bootsrap-For making webpage responsive
 * Angular 10;
 * Typscript
-* Figma- For web application Design. (https://www.figma.com/file/bD0OEBLVnII6Q2K4uL5e9E/Git-search-app?node-id=0%3A1)
+* Figma- For web application Design.(https://www.figma.com/file/bD0OEBLVnII6Q2K4uL5e9E/Git-search-app?node-id=0%3A1)
 
 ## Behavior Driven Development
 <table>
