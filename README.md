@@ -1,5 +1,6 @@
 #  Github Search App
-#### This project helps people to search other peoples profile repositories, followers date the account was created and place of location.
+#### This Web Application helps user to search other peoples profile repositories, followers date the account was created and place of location in Github.
+
 #### By **KIPTOO KENNEDY**&trade;
 
 ## Description
