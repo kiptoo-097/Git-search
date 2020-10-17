@@ -77,6 +77,6 @@ contact me @ kiptoo097@gmail.com.com
 The project is under[MIT license](/blob/master/LICENSE)
 Copyright &copy; 2020.All rigths reserved
 
-## Further help
+## Further help.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
