@@ -4,7 +4,8 @@
             <form>
                 <div class="form-group">
                     <label for="username">Enter Username</label>
-                    <input type="text" id="username" required class="form-control" name="username" placeholder="Enter Username" [(ngModel)]="username">
+                    <input type="text" id="username" required class="form-control" name="username"
+                        placeholder="Enter Username" [(ngModel)]="username">
                 </div>
                 <div class="text-center">
                     <button class="btn btn-success" value="submit" type="submit" (click)="search()">
@@ -26,7 +27,7 @@
                         <img src="{{ user.avatar_url }}" class="img-fluid" alt="me" />
                     </div>
                     <div class="col-md-8">
-                      
+
                         <br />
                         <ul class="list-group">
                             <li class="list-group-item">
@@ -67,7 +68,7 @@
                             <div class="row">
                                 <div class="card m-2" style="width: 100%;">
                                     <div class="card-body mycard">
-                                        <h5 class="card-title">{{ repo.name }} Project</h5>
+                                        <h5 appHighlight class="card-title">{{ repo.name }} Project</h5>
                                         <p class="card-text"></p>
                                         <div class="col-md-9">
                                             <h4>{{ repo.name }}</h4>
@@ -92,24 +93,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
