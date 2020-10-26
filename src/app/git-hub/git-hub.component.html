@@ -37,7 +37,7 @@
                                 <strong>Location:</strong>{{ user.location }}
                             </li>
                             <li class="list-group-item">
-                                <strong>Joined: </strong>{{ user.created_at | date }}
+                                <strong>Joined: </strong>{{ user.created_at | dateCount}}
                             </li>
                         </ul>
                         <br>
@@ -80,8 +80,8 @@
                                             <span class="badge badge-primary mr-1">
                                                 {{ repo.watchers }} Watchers</span>
                                             <span class="badge badge-secondary mr-1">{{ repo.forks }} Forks</span>
-                                            <span class="badge badge-secondary mr-1"> Created On:
-                                                {{repo.created_at | date}}</span>
+                                            <span class="badge badge-secondary mr-1"> Created:
+                                                {{repo.created_at | dateCount}}</span>
                                         </div>
                                     </div>
                                 </div>

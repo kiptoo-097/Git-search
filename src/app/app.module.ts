@@ -8,12 +8,16 @@ import {HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { NavComponent } from './nav/nav.component';
+import { HighlightDirective } from './highlight.directive';
+import { DateCountPipe } from './date-count.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     GitHubComponent,
     NavComponent,
+    HighlightDirective,
+    DateCountPipe,
   
   ],
   imports: [
