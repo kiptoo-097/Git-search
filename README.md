@@ -74,7 +74,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Support and contact details
 contact me @ kiptoo097@gmail.com.com
 ### License
-The project is under[MIT license](/blob/master/LICENSE)
+The project is under[MIT license](https://github.com/kiptoo-097/Git-search/blob/master/LICENSE.md)
 Copyright &copy; 2020.All rigths reserved
 
 ## Further help.
