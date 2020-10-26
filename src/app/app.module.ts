@@ -10,6 +10,8 @@ import { from } from 'rxjs';
 import { NavComponent } from './nav/nav.component';
 import { HighlightDirective } from './highlight.directive';
 import { DateCountPipe } from './date-count.pipe';
+import { AboutComponent } from './about/about.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { DateCountPipe } from './date-count.pipe';
     NavComponent,
     HighlightDirective,
     DateCountPipe,
+    AboutComponent,
+    FormComponent,
   
   ],
   imports: [

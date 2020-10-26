@@ -1,21 +1,14 @@
 <div class="container main">
-    <div class="row">
-        <div class="col-md-12">
-            <form>
-                <div class="form-group">
-                    <label for="username">Enter Username</label>
-                    <input type="text" id="username" required class="form-control" name="username"
-                        placeholder="Enter Username" [(ngModel)]="username">
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-success" value="submit" type="submit" (click)="search()">
-                        Search
-                    </button>
-                </div>
-            </form>
+    <router-outlet></router-outlet>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-12">
+                <app-form (emitSearch)="searchUsers($event)"></app-form>
+            </div>
+            </div>
         </div>
-    </div>
-
+            
+       
     <div *ngIf="user" class="mt-1">
         <div class="card">
             <div class="card-header">
@@ -64,7 +57,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div *ngFor="let repo of repos">
+                        <div *ngFor="let repo of repositories">
                             <div class="row">
                                 <div class="card m-2" style="width: 100%;">
                                     <div class="card-body mycard">

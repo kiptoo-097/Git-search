@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GitServiceService } from '../git-service.service';
+import {GitsearchService } from '../git-service.service'
+import { Users } from '../users';
+import { Repositories} from '../repositories';
 
 @Component({
   selector: 'app-git-hub',
@@ -8,37 +10,31 @@ import { GitServiceService } from '../git-service.service';
 })
 export class GitHubComponent implements OnInit {
 
-  user: any[]=[];
-  repos: any[]=[];
-  username: any[]=[];
-  
+  user: Users;
+  repositories: Repositories;
+   
 
-  constructor( private gitSearch: GitServiceService) { }
+  constructor( public gitSearch: GitsearchService) { }
+  searchUsers(term) {
+    this.gitSearch.searchUsers(term).then(
+      (success) => {
+        this.user = this.gitSearch.user;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.gitSearch.getRepos(term).then(
+      (success) => {
+        this.repositories = this.gitSearch.repositories;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
   ngOnInit(): void {
-    this.gitSearch.getRepos(this.username).subscribe ((repos:any)=>{
-      this.repos = repos;
-      console.log(repos);
-      
-    });
-    this.gitSearch.getUser(this.username).subscribe((user:any) =>{
-      this.user = user;
-      console.log(user);
-    });
+    this.searchUsers('kiptoo-097');
   }
-    search() {
-      this.gitSearch.updateUsername(this.username);
-   
-  
-      this.gitSearch.getUser(this.username).subscribe((user:any) =>{
-        this.user = user;
-        console.log(user);
-      });
-      this.gitSearch.getRepos(this.username).subscribe ((repos:any)=>{
-        this.repos = repos;
-        console.log(repos);
-      });
-    
-  }
-
 }

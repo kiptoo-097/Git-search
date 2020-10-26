@@ -1,51 +1,74 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-
+import { Users } from './users'
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment'
+import { Repositories } from './repositories'
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GitServiceService {
-  private username = 'kiptoo-097';
-  private client_id = 'c9ed5b82ae24528d67ea';
-  private client_secret = '251f6ae74883dc3083e9d239c19c5239ff8a4aba';
+export class GitsearchService {
+  user: Users
+  repositories: Repositories
 
-
-  constructor( private http: HttpClient) {
-    console.log("Github service started");
-   }
-   getUser(username) {
-    return this.http.get(
-      "https://api.github.com/users/" +
-      this.username +
-      "?client_id=" +
-      this.client_id +
-      "&client_secret=" +
-      this.client_secret
-    );
+  constructor(public http: HttpClient) {
+    this.user = new Users('','','',0,0,new Date,0,'',0);
+    this.repositories = new Repositories('', '', '','', 0,0, 0);
   }
-  getRepos(username) {
-    return this.http.get(
-      "https://api.github.com/users/" +
-      this.username +
-      "/repos" +
-      "?client_id=" +
-      this.client_id +
-      "&client_secret=" +
-      this.client_secret
-    );
+  searchUsers(term:string){
+    interface ApiResponse {
+        avatar_url: any,
+        login:any,
+        location: any,
+        followers: any,
+        following: any,
+        created_at: Date,
+        public_repos: number,
+        html_url: any,
+        public_gists: any,
+    }
+    let searchPoint = 'https://api.github.com/users/' + term + '?access_token=' + environment.apiKey;
+    let promise = new Promise((resolve, reject) => {
+      this.http.get<ApiResponse>(searchPoint).toPromise().then(
+        (results) => {
+          this.user = results;
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
+    return promise;
   }
-  updateUsername(username: any) {
-    this.username = username;
+  getRepos(term) {
+    interface ApiResponse {
+      name: string,
+      html_url: string,
+      description: string,
+      created_at: string,
+      stargazers_count: number,
+      watchers_count: number,
+      forks:number,
+    }
+    let searchPoint = 'https://api.github.com/users/' + term + '/repos?access_token=' + environment.apiKey;
+    let promise = new Promise((resolve, reject) => {
+      this.http.get<ApiResponse>(searchPoint).toPromise().then(
+        (repoResults) => {
+          this.repositories = repoResults;
+          console.log(repoResults);
+          
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
+    return promise;
   }
-  //  getUser(username){
-  //   return this.http.get('https://api.github.com/users/' + username + '?access_token=9577a25158b0d8a520f6569238d45f44515c9827');
-  //  }
-
-
-  //  getRepos(username) {
-  //   return this.http.get('https://api.github.com/users/' + username+ '/repos?access_token=9577a25158b0d8a520f6569238d45f44515c9827');
-  // }
-
 
 }
