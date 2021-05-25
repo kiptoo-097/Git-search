@@ -1,0 +1,88 @@
+<div class="container main">
+    <router-outlet></router-outlet>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-12">
+                <app-form (emitSearch)="searchUsers($event)"></app-form>
+            </div>
+            </div>
+        </div>
+            
+       
+    <div *ngIf="user" class="mt-1">
+        <div class="card">
+            <div class="card-header">
+                <p>{{ user.name }}</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ user.avatar_url }}" style="border-radius: 50%; height: 70%;" class="img-fluid" alt="me" />
+                    </div>
+                    <div class="col-md-8">
+
+                        <br />
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Username:</strong>{{ user.login }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Location:</strong>{{ user.location }}
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Joined: </strong>{{ user.created_at | dateCount}}
+                            </li>
+                        </ul>
+                        <br>
+                        <div class="about">
+                            <span class="badge badge-primary mr-2">
+                                {{ user.public_repos }} Public Repos</span>
+                            <span class="badge badge-secondary mr-2">{{ user.public_gists }} Gists</span>
+                            <span class="badge badge-success mr-2">
+                                {{ user.followers }} Followers</span>
+                            <span class="badge badge-danger mr-2">
+                                {{ user.following }} Following</span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <a href="{{ user.html_url }}" class="btn btn-outline-info">View On Github</a>
+            </div>
+        </div>
+        <br />
+        <div class="card">
+            <div class="card-header badge-secondary">
+                <h2>Repositories</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div *ngFor="let repo of repositories">
+                            <div class="row">
+                                <div class="card m-2" style="width: 100%;">
+                                    <div class="card-body mycard">
+                                        <h5 appHighlight class="card-title">{{ repo.name }} Project</h5>
+                                        <p class="card-text"></p>
+                                        <div class="col-md-9">
+                                            <h4>{{ repo.name }}</h4>
+                                            <p>{{ repo.description }}</p>
+                                            <a href="{{ repo.html_url }}" target="_blank" class="btn btn-info">
+                                                Github</a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <span class="badge badge-primary mr-1">
+                                                {{ repo.watchers }} Watchers</span>
+                                            <span class="badge badge-secondary mr-1">{{ repo.forks }} Forks</span>
+                                            <span class="badge badge-secondary mr-1"> Created:
+                                                {{repo.created_at | dateCount}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
